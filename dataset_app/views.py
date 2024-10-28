@@ -1,8 +1,8 @@
 from .models import Dataset, Tag
 from .serializers import DatasetSerializer, TagSerializer
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.viewsets import ModelViewSet
 
 
-class LlistCreateDataset(ListCreateAPIView):
+class DatasetViewSet(ModelViewSet):
     queryset = Dataset.objects.all()
     serializer_class = DatasetSerializer
