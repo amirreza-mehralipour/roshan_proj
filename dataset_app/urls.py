@@ -1,12 +1,12 @@
 from django.urls import path, include
-from .views import LlistCreateDataset, DatasetViewSet
+from .views import DatasetViewSet, TagViewSet
 from rest_framework.routers import DefaultRouter
 
 
 router = DefaultRouter()
 router.register(r'dataset', DatasetViewSet)
+router.register(r'tag', TagViewSet)
 
 urlpatterns = [
-    # path('dataset/', LlistCreateDataset.as_view()),
     path('', include(router.urls)),
 ]
