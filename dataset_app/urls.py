@@ -3,5 +3,5 @@ from .views import LlistCreateDataset
 
 
 urlpatterns = [
-    path('', LlistCreateDataset.as_view())
+    path('dataset/', LlistCreateDataset.as_view())
 ]
