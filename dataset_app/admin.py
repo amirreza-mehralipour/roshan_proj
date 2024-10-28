@@ -1,3 +1,12 @@
-from django.contrib import admin
+from django.contrib.admin import register, ModelAdmin
+from .models import *
 
-# Register your models here.
+
+@register(Dataset)
+class DatasetAdmin(ModelAdmin):
+    pass
+
+
+@register(Tag)
+class TagAdmin(ModelAdmin):
+    pass

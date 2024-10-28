@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from .models import Dataset, Tag
+from .serializers import DatasetSerializer, TagSerializer
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
-# Create your views here.
+
+class LlistCreateDataset(ListCreateAPIView):
+    queryset = Dataset.objects.all()
+    serializer_class = DatasetSerializer
