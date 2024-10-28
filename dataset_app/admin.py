@@ -1,5 +1,5 @@
 from django.contrib.admin import register, ModelAdmin
-from .models import *
+from .models import Dataset, Tag
 
 
 @register(Dataset)
