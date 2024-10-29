@@ -1,5 +1,5 @@
 from django.contrib.admin import register, ModelAdmin
-from .models import Dataset, Tag, Data, DataTag, AnsweredDataset
+from .models import Dataset, Tag, Data, DataTag, AnsweredDataTag
 
 
 @register(Dataset)
@@ -21,6 +21,6 @@ class DataAdmin(ModelAdmin):
     pass
 
 
-@register(AnsweredDataset)
-class AnsweredDatasetAdmin(ModelAdmin):
+@register(AnsweredDataTag)
+class AnsweredDataTagAdmin(ModelAdmin):
     pass

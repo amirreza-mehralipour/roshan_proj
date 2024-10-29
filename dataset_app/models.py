@@ -24,7 +24,6 @@ class Data(models.Model):
 class DataTag(models.Model):
     data = models.ForeignKey(Data, on_delete= models.PROTECT)
     tag = models.ForeignKey(Tag, on_delete=models.PROTECT)
-    tag_status = models.BooleanField()
     created_at = models.DateTimeField(auto_now_add= True)
     last_updated_at = models.DateTimeField(auto_now= True)
 
@@ -34,21 +33,23 @@ class DataTag(models.Model):
         return f'tag: {self.tag.description} dataset: {self.data.statement}'
     
 
+class AnsweredDataTag(models.Model):
+    datatag = models.ForeignKey(DataTag, on_delete= models.PROTECT)
+    # operator = models.ForeignKey(User, on_delete= models.PROTECT)
+    tag_status = models.BooleanField()
+    tagged_at = models.DateTimeField(auto_now_add= True)
+    last_changed_tag_at = models.DateTimeField(auto_now= True)
+
+    # def __str__(self) -> str:
+    #     return super().__str__()
+
+
 class Dataset(models.Model):
-    datatag = models.ManyToManyField(DataTag)
+    answered_datatags = models.ManyToManyField(AnsweredDataTag)
     is_active = models.BooleanField(default= True)
 
     # def __str__(self) -> str:
     #     data = self.DataTag.all()
     #     return f'{data[0]}'
     
-
-class AnsweredDataset(models.Model):
-    dataset = models.ForeignKey(Dataset, on_delete= models.PROTECT)
-    # operator = models.ForeignKey(User, on_delete= models.PROTECT)
-    tagged_at = models.DateTimeField(auto_now_add= True)
-    last_changes_in_tags = models.DateTimeField(auto_now= True)
-
-    # def __str__(self) -> str:
-    #     return super().__str__()
 
